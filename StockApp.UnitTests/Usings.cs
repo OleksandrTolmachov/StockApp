@@ -1,0 +1,12 @@
+global using Xunit;
+global using AutoFixture;
+global using AutoMapper;
+global using FluentAssertions;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Options;
+global using Moq;
+global using StockApp.Application.DTO;
+global using StockApp.Application.Options;
+global using StockApp.Application.Services;
+global using StockApp.WebUI.Controllers;
+global using StockApp.WebUI.ViewModels;

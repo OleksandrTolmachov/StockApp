@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Dictionary<string, string>>
+
+<div>
+    Stocks > Explore
+    <div class="row">
+        <div class="col-sm-12 col-md-7 pd-0 pd-sm-0 pb-md-4">
+            <ul class="list-group">
+                @if (Model is not null)
+                {
+                    @foreach (var stock in Model)
+                    {
+                        <li onclick=@($"setCardInfo('{stock["displaySymbol"]}')")
+                            class="list-group-item list-group-item-action">
+                            <h5 class="mb-1">@stock["description"]</h5>
+                            <p class="mb-1">@stock["displaySymbol"]</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="col-md-4 col-sm-12 col-12 detailed-card ms-md-3 pt-md-4 pb-md-4 ms-sm-0 pt-sm-0 pb-sm-0">
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="/scripts/SetCardInfo.js">
+    </script>
+    <script src="~/scripts/CloseCard.js"></script>
+}

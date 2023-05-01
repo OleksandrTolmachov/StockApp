@@ -1,0 +1,27 @@
+﻿@model IEnumerable<OrderPDF>
+@{
+    Layout = null;
+}
+<link href="@("http://" + Context.Request.Host.ToString() + "/Stylesheet.css")" rel="stylesheet" />
+
+<table class="table">
+    <tr>
+        <th>Date and time</th>
+        <th>Stock</th>
+        <th>Order type</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Trade amount</th>
+    </tr>
+    @foreach (var orderPDF in Model)
+    {
+        <tr>
+            <td>@orderPDF.DateTimeOffer</td>
+            <td>@orderPDF.Stock</td>
+            <td>@orderPDF.OrderType</td>
+            <td>@orderPDF.Quantity</td>
+            <td>@orderPDF.Price</td>
+            <td>@orderPDF.TradeAmount</td>
+        </tr>
+    }
+</table>

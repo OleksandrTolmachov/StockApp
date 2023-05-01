@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d711aec8-18d6-4863-a38f-b43c4e176456</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StockApp.Application\StockApp.Application.csproj" />
+    <ProjectReference Include="..\StockApp.Infrastrucuture\StockApp.Infrastrucuture.csproj" />
+  </ItemGroup>
+
+</Project>

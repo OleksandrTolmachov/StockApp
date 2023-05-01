@@ -1,0 +1,40 @@
+﻿@model StockTrade
+<div>Stocks > Orders</div>
+@if (Model is not null)
+{
+    <div class="d-flex flex-md-row flex-sm-column flex-column border mb-3">
+        <div class="col-12 col-md-8 col-sm-12 ps-3 bg-light">
+            <div class="text-primary fs-1" id="stock-name">@Model.StockName</div>
+            <div id="stock-symbol">@Model.StockSymbol</div>
+            <div><span id="main-price" class="fs-2 fw-bold">@Model.Price</span></div>
+            <div class="bg-light col-4"></div>
+        </div>
+        <div class="buy-sell-item bg-light col-md-4 border-start d-flex flex-column m-0 p-0 align-items-md-center">
+            <div class="row col-8 ms-sm-2 ms-2 ms-md-0 gap-2">
+                <div class="fs-4 text-secondary">New order</div>
+                <form method="post">
+                    <input hidden asp-for=StockSymbol />
+                    <label asp-for=Quantity class="p-0" style="margin-bottom: -6px">Quantity:</label>
+                    <input asp-for="Quantity" value="@Model.Quantity" class="form-control">
+                    <div class="d-flex mt-2 p-0 gap-2 mb-3">
+                        <button type="submit" formaction="BuyOrder" class="btn btn-success flex-grow-1">Buy</button>
+                        <button type="submit" formaction="SellOrder" class="btn btn-danger flex-grow-1">Sell</button>
+                    </div>
+                    <span>@ViewBag.Error</span>
+                    <span asp-validation-summary=All></span>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+<style>
+
+    @@media (max-width: 768px) {
+        .buy-sell-item {
+            border-left: 0mm !important;
+        }
+    }
+</style>
+@section scripts{
+    <script src="scripts/PriceUpdater.js"></script>
+}

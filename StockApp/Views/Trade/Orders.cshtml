@@ -1,0 +1,46 @@
+﻿@model Orders
+
+<div>Stocks > Orders</div>
+<div class="row gx-3">
+    <div class="col-12 col-md-6 col-sm-12 mb-3">
+        <section class="border bg-light ps-2">
+            <div class="fw-bold">Buy orders</div>
+            <div class="list-group list-group list-group-flush">
+                @foreach (var buyOrder in Model.BuyOrders)
+                {
+                    <div class="list-group-item bg-light buytrade-item">
+                        <div class="text-primary fs-3 stock-buysymbol">@buyOrder.StockSymbol</div>
+                        <span class="fw-bold buytrade-quantity">@buyOrder.Quantity</span>
+                        <span class="">shares at</span>
+                        <span class="fw-bold stock-buyprice">$@(Math.Round(buyOrder.Price, 2))</span>
+                        <br />
+                        <span>Trade amount:</span>
+                        <span class="fw-bold buytrade-amount">$@(Math.Round(buyOrder.Price * buyOrder.Quantity, 2))</span>
+                        <p class="buytime">@buyOrder.DateTimeOffer</p>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+    <div class="col-12 col-md-6 col-sm-12 mb-3">
+        <section class="border bg-light ps-2">
+            <div class="fw-bold">Sell orders</div>
+            <div class="list-group list-group list-group-flush">
+                @foreach (var sellOrder in Model.SellOrders)
+                {
+                    <div class="list-group-item bg-light selltrade-item">
+                        <div class="text-primary fs-3 stock-sellsymbol">@sellOrder.StockSymbol</div>
+                        <span class="fw-bold selltrade-quantity">@sellOrder.Quantity</span>
+                        <span class="">shares at</span>
+                        <span class="fw-bold stock-sellprice">$@sellOrder.Price</span>
+                        <br />
+                        <span>Trade amount:</span>
+                        <span class="fw-bold selltrade-amount">$@(Math.Round(sellOrder.Price * sellOrder.Quantity, 2))</span>
+                        <p>@sellOrder.DateTimeOffer</p>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+<a asp-controller="Trade" asp-action="OrdersPDF" target="_blank"><i class="fa-solid fa-file-pdf fa-xl"></i></a>
