@@ -15,8 +15,8 @@ services:
     depends_on:
       - mssqldb
     environment:
-      - TokenOptions__Token=cfnbfb1r01qokr93c6ogcfnbfb1r01qokr93c6p0
-      - ConnectionStrings__Default=Data Source=mssqldb;Initial Catalog=stockapp;User ID=sa;Password=123456@ab;TrustServerCertificate=True
+      - TokenOptions__Token=_
+      - ConnectionStrings__Default=_
   mssqldb:
     container_name: stockappdb
     image: mcr.microsoft.com/mssql/server:2019-latest
