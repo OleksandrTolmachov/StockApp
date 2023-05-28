@@ -1,0 +1,29 @@
+version: "3.9"
+networks:
+  deploy-stock-app:
+    driver: bridge
+services:
+  app:
+    container_name: stockapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5130:5130"
+    networks:
+      - deploy-stock-app
+    depends_on:
+      - mssqldb
+    environment:
+      - TokenOptions__Token=cfnbfb1r01qokr93c6ogcfnbfb1r01qokr93c6p0
+      - ConnectionStrings__Default=Data Source=mssqldb;Initial Catalog=stockapp;User ID=sa;Password=123456@ab;TrustServerCertificate=True
+  mssqldb:
+    container_name: stockappdb
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=123456@ab
+    ports:
+      - "8002:1433"
+    networks:
+      - deploy-stock-app

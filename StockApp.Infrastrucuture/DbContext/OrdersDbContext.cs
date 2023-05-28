@@ -9,7 +9,9 @@ public class OrdersDbContext : DbContext
     public DbSet<SellOrder> SellOrders { get; set; }
 
     public OrdersDbContext(DbContextOptions options) : base(options)
-    { }
+    {
+        Database.EnsureCreated();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
